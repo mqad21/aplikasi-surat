@@ -4,6 +4,8 @@ namespace App\Filament\Resources\OutcomingLetterResource\Pages;
 
 use App\Filament\Exports\OutcomingLetterExporter;
 use App\Filament\Resources\OutcomingLetterResource;
+use App\Models\OutcomingLetter;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Filament\Actions;
 use Filament\Actions\ExportAction;
 use Filament\Resources\Pages\ManageRecords;
@@ -15,7 +17,9 @@ class ManageOutcomingLetters extends ManageRecords
     protected function getHeaderActions(): array
     {
         return [
-            Actions\CreateAction::make()->icon('heroicon-o-plus')->label('Tambah Data'),
+            Actions\CreateAction::make()
+                ->icon('heroicon-o-plus')
+                ->label('Tambah Data'),
             ExportAction::make()->exporter(OutcomingLetterExporter::class)->label('Cetak Data')->modelLabel('Surat Keluar')
         ];
     }
